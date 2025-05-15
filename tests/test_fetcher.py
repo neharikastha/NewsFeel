@@ -7,7 +7,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from app.services.fetcher import fetch_news
 
 @pytest.mark.asyncio
-@patch("httpx.AsyncClient.get", new_callable=AsyncMock)
+@patch("app.services.fetcher.settings.news_api_url", "https://mockapi.com/news")  # ✅ Mock API URL
+@patch("httpx.AsyncClient.get", new_callable=AsyncMock)  # ✅ Mock API call
 async def test_fetch_news(mock_get):
     mock_response = MagicMock()
     mock_response.status_code = 200
@@ -25,4 +26,4 @@ async def test_fetch_news(mock_get):
 
     data = await fetch_news("ai")
     assert isinstance(data, list)
-    assert "title" in data[0] 
+    assert "title" in data[0]
