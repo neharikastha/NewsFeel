@@ -1,24 +1,23 @@
-# 📰 News Aggregator (FastAPI + Sentiment Analysis )
+# 📰 News Aggregator (FastAPI + Sentiment Analysis)
 
-A lightweight news aggregator built with **FastAPI**, that fetches news by topic, performs sentiment analysis, and displays articles with optional filtering.
+A news aggregator built with **FastAPI**, that fetches news by topic, performs sentiment analysis, and displays articles with optional filtering.
 
 ---
 
-##  Features
+## Features
 
 - Search news by topic (e.g., technology, business, sports)
-- Sentiment analysis 
+- Sentiment analysis using `distilbert-base-uncased-finetuned-sst-2-english`
 - Filter to show only **positive** news
-- Responsive UI using simple HTML & CSS
+- Responsive UI using simple HTML & CSS 
 - Containerized with Docker + CI/CD using GitHub Actions
-- Uses 12 factor principles
 
 ---
 
 ##  Tech Stack
 
 - FastAPI
-- Jinja2 (template rendering)
+- Jinja2 
 - Transformers (`huggingface/transformers`)
 - httpx (async HTTP requests)
 - Docker 
@@ -35,7 +34,30 @@ cd NewsFeel
 
 # Set up virtual environment
 python -m venv fastapi
-source fastapi/bin/activate  # or fastapi\Scripts\activate on Windows
+fastapi\Scripts\activate on Windows
 
 # Install requirements
 pip install -r requirements.txt
+```
+---
+
+## Set .env
+```bash
+NEWS_API_KEY=your_newsapi_key
+NEWS_API_URL=your_newsapi_url
+```
+---
+
+## Run the app
+```bash
+uvicorn app.main:app --reload
+```
+---
+
+## Run with Docker
+```bash
+docker build -t newsfeel .
+docker run -p 8000:8000 newsfeel
+
+
+
