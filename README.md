@@ -1,16 +1,17 @@
-# 📰 News Aggregator (FastAPI + Sentiment Analysis)
+# 📰 News Feel (FastAPI + Sentiment Analysis)
 
-A news aggregator built with **FastAPI**, that fetches news by topic, performs sentiment analysis, and displays articles with optional filtering.
+A news aggregator built with **FastAPI**, that fetches news by topic, performs sentiment analysis, and displays positive articles by filtering.
 
 ---
 
 ## Features
 
-- Search news by topic (e.g., technology, business, sports)
+- Search news by topic (e.g., technology, business, sports, AI, entertainment) and navigates to  the webpage for full length news
 - Sentiment analysis using `distilbert-base-uncased-finetuned-sst-2-english`
 - Filter to show only **positive** news
 - Responsive UI using simple HTML & CSS 
 - Containerized with Docker + CI/CD using GitHub Actions
+- Uses 12 factor app principles
 
 ---
 
