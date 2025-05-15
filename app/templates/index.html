@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Aggregator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+        }
+
+        header {
+            color: rgb(77, 9, 179);
+            padding: 0.3rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background-color:rgb(77, 9, 179);
+            display: flex;
+            gap: 4rem;
+            padding: 1rem;
+            margin: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        form {
+            margin-bottom: 1rem;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            width: 50%;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color:rgb(66, 6, 123);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: white;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li a {
+            text-decoration: none;
+            color:rgb(54, 8, 146);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> News Aggregator</h1>
+    </header>
+
+    <nav>
+        <a href="/?topic=technology">Technology</a>
+        <a href="/?topic=business">Business</a>
+        <a href="/?topic=sports">Sports</a>
+        <a href="/?topic=Weather">Weather</a>
+        <a href="/?topic=AI">AI</a>
+        <a href="/?topic=health">Health</a>
+        <a href="/?topic=science">Science</a>
+        <a href="/?topic=entertainment">Entertainment</a>
+        <a href="/?topic=politics">Politics</a>
+        <a href="/?topic=education">Education</a>
+        <a href="/?topic=food">Food</a>
+
+    </nav>
+
+    <div class="container">
+        <form method="get">
+            <input type="text" name="topic" placeholder="Search any topic..." value="{{ topic }}">
+            <label>
+                <input type="checkbox" name="positive_only" value="true"
+                    {% if positive_only %}checked{% endif %}>
+
+                Positive news
+            </label>
+            <button type="submit">Search</button>
+        </form>
+
+        <h2>News for "{{ topic }}"</h2>
+        <ul>
+            {% for article in articles %}
+            <li>
+                <a href="{{ article.url }}" target="_blank">
+                    <strong>{{ article.title }}</strong>
+                </a>
+                <p>{{ article.description }}</p>
+                <p><strong>Sentiment:</strong> {{ article.sentiment }}</p>
+
+            </li>
+            {% endfor %}
+        </ul>
+        <form method="get">
+            <input type="hidden" name="topic" value="{{ topic }}">
+            <input type="hidden" name="page" value="{{ page + 1 }}">
+            <button type="submit">More</button>
+        </form>
+
+    </div>
+</body>
+</html>

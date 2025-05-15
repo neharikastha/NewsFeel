@@ -1,0 +1,46 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.so
+
+# Virtual environment
+venv/
+fastapi/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Test-related
+.cache/
+.coverage
+.tox/
+.pytest_cache/
+htmlcov/
+
+# Docker
+*.tar
+docker-compose.override.yml
+
+# Pydantic compiled models
+app/__pydantic_cache__/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode workspace
+*.code-workspace
+
+
